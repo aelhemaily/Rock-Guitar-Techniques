@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Chords - Guitar Learning</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .body {
+      background-image: url("images/bg-body.png");
+      background-size: cover;
+    }
+
+    .sidebar {
+      background-color: #111111;
+      z-index: 10; /* Ensure sidebar appears on top */
+    }
+
+    .footer {
+      background-color: #111111;
+    }
+
+    .learning-tip {
+      color: #FBBF24;
+      font-size: 1.25rem;
+    }
+
+    .grid-item {
+      margin-bottom: 20px; /* Reduced gap between grid items */
+    }
+
+    .grid-item .inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .container h1 {
+      color: white;
+      text-shadow: -1px -1px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+    }
+
+    .container p {
+      color: white;
+      text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    }
+
+    .did-you-know-title {
+      color: #FBBF24;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .did-you-know-text {
+      font-size: 28px;
+    }
+
+    .box,
+    .box-right,
+    .box-left,
+    .box-bottom {
+      background-color: rgba(26, 26, 26, 0.8); /* Adjust transparency */
+      border: 3px solid lavender;
+      border-radius: 10px;
+      padding: 60px;
+      height: 100%; /* Set box height to 100% */
+      display: flex; /* Add flex display */
+      flex-direction: column; /* Align content in column */
+      transition: all 0.3s ease; /* Add transition for smooth hover effect */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box-left:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) translateX(-50px) scale(1.1); /* Add zoom effect on hover */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+      z-index: 1;
+    }
+
+    .box-right:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) translateX(50px) scale(1.1); /* Add zoom effect on hover */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+      z-index: 1;
+    }
+
+    .box-bottom:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) scale(1.1); /* Add zoom effect on hover */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+      z-index: 1;
+    }
+
+    .box-title {
+      color: #FBBF24;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .box-content {
+      color: #fff;
+      font-size: 1.5rem;
+     
+      
+    }
+
+    .box-content a {
+      color: #FBBF24;
+      text-decoration: none;
+    }
+
+    .box-content a:hover {
+      text-decoration: underline;
+    }
+
+    .download-box {
+      margin-top: 5px;
+      
+      
+    }
+
+    .download-box-content a{
+      font-size: 1.1rem;
+      color: silver;
+    }
+
+    .download-box-content li:hover a {
+      text-decoration: underline;
+      color: gold;
+    }
+
+    
+
+    .song-info {
+      position: absolute;
+      margin-left: 55%;
+      bottom: 0;
+      background-color: rgba(59, 31, 31, 0.649);
+      height: 75%;
+      bottom: 5%;
+      width: 35%;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #FBBF24;
+      display: none;
+      z-index: 2;
+    }
+
+    .song:hover .song-info {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="body text-white font-sans">
+
+  <!-- Navigation -->
+  <nav class="bg-black p-4 border-solid border-2 border-sky-500">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold mx-auto text-3xl">Rock Guitar Techniques</h1>
+      <!-- Sidebar toggle button -->
+      <button id="sidebarToggle" class="lg:hidden focus:outline-none">
+        <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M21 18v-2H3v2h18zm0-5V11H3v2h18zm0-7V4H3v2h18z" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar  -->
+  <div id="sidebar"
+    class="sidebar bg-gray-800 h-screen w-56 fixed top-0 overflow-y-auto ease-in-out transition-all duration-300 lg:block hidden border-solid border-2 border-sky-500">
+    <ul class="pt-10">
+      <li><a href="#" class="block py-2 px-4 text-2xl hover:bg-gray-700">Home</a></li>
+      <li><a href="#" class="block py-2 px-4 text-2xl hover:bg-gray-700">About</a></li>
+      <li><a href="#" class="block py-2 px-4 text-2xl hover:bg-gray-700">FAQ</a></li>
+      <li><a href="#" class="block py-2 px-4 text-2xl hover:bg-gray-700">Contact Me</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container mx-auto py-10 px-6 mb-20">
+    <h1 class="text-3xl font-bold mb-8 text-center">Power Chords: Where it All Starts</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6"> <!-- Reduced gap between grid items -->
+      <div class="grid-item">
+        <div class="box-left">
+          <div class="inner">
+            <h2 class="box-title">WTH are Power Chords?</h2>
+            <p class="box-content">Imagine taking a regular chord and turning it into a riff machine! That's the magic of power chords. Instead of fretting lots of strings, you just play two or three together, creating a signature sound perfect for rock and metal. Bonus - they're way easier to learn than full chords!</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="box-right">
+          <div class="inner">
+            <h2 class="box-title">Prominent Genre(s)</h2>
+            <p class="box-content">Power chords are the building blocks of rock and metal. From the iconic riffs of AC/DC to the face-melting shred of Slayer, these two (or three) notes are what make those genres pump.</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="box-left">
+          <div class="inner">
+            <h2 class="did-you-know-title">Did You Know?</h2>
+            <h3 class="box-title">Accidental Awesomeness</h3>
+            <p class="did-you-know-text">The invention of the power chord is often credited to Link Wray, a guitarist from the 1950s. But here's the funny part: legend has it he created it by accident! He supposedly broke the speaker in his amp, which distorted the sound and created that signature power chord crunch. Talk about a happy accident!</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="box-right">
+          <div class="inner">
+            <div class="download-box">
+              <h2 class="box-title">Download Song Tabs</h2>
+              <ul class="download-box-content">
+                <li class="song" onmouseover="changeBackground('acdc')" onmouseout="resetBackground()">
+                  <a href="#">AC/DC – Back in Black</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most Song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=pAgnJDJN4VA&ab_channel=acdcVEVO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=NFgE_xDxCZ4&ab_channel=Mr.Tabs">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Hard Rock</p>
+                    <p><strong>Origin:</strong> Sydney, Australia</p>
+                    <p><a href="https://en.wikipedia.org/wiki/AC/DC">More about this artist</a></p>
+                    <img src="images/acdc.png" alt="AC/DC">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('scorpions')" onmouseout="resetBackground()">
+                  <a href="#">Scorpions – Rock You Like a Hurricane</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Intro rhythm</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=6yP1tcy9a10&ab_channel=ScorpionsVEVO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=Umou02wge6g&ab_channel=Mr.Tabs">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Hard Rock/Metal</p>
+                    <p><strong>Origin:</strong> Hanover, Germany</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Scorpions_(band)">More about Scorpions</a></p>
+                    <img src="images/scorpions.png" alt="Scorpions">
+                  </div>
+                </li>
+                
+
+                <li class="song" onmouseover="changeBackground('greenday')" onmouseout="resetBackground()">
+                  <a href="#">Green Day – American Idiot</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Main riff</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=Ee_uujKuJMI&ab_channel=GreenDay">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=8mU5W5RxwyA&ab_channel=GuitarZero2HeroExpress">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Punk Rock</p>
+                    <p><strong>Origin:</strong> California, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Green_Day">More about this artist</a></p>
+                    <img src="images/greenday.png" alt="Green Day">
+                  </div>
+                </li>
+
+                <li class="song" onmouseover="changeBackground('nirvana')" onmouseout="resetBackground()">
+                  <a href="#">Nirvana – Smells Like Teen Spirit</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Main riff</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=hTWKbfoikeg&ab_channel=NirvanaVEVO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=M9F23jZ9Cvk&ab_channel=Mr.Tabs">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Grunge/Alternative Rock</p>
+                    <p><strong>Origin:</strong> Washington, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Nirvana_(band)">More about this artist</a></p>
+                    <img src="images/nirvana.png" alt="Nirvana">
+                  </div>
+                </li>
+
+                <li class="song" onmouseover="changeBackground('bmth')" onmouseout="resetBackground()">
+                  <a href="#">Bring Me The Horizon – DArkSide</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most Song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=3Nt37RGbVjo&ab_channel=BMTHOfficialVEVO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=X6yuxMhHBqY&ab_channel=dogeplaysguitar">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Drop C (C G C F A D)</p>
+                    <p><strong>Genre:</strong> Metalcore/Alternative Rock</p>
+                    <p><strong>Origin:</strong> Sheffield, United Kingdom</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Bring_Me_the_Horizon">More about this artist</a></p>
+                    <img src="images/bmth.png" alt="Bring Me The Horizon">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('blink-182')" onmouseout="resetBackground()">
+                  <a href="#">Blink-182 – All the Small Things</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most Song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=9Ht5RZpzPqw&ab_channel=blink182VEVO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=o7xjGSqhZVw&ab_channel=DottiBrothers">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Alternative/Punk Rock</p>
+                    <p><strong>Origin:</strong> California, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Blink-182">More about this artist</a></p>
+                    <img src="images/blink-182.png" alt="Blink-182">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('twisted-sister')" onmouseout="resetBackground()">
+                  <a href="#">Twisted Sister – I Wanna Rock</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most Song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=SRwrg0db_zY&ab_channel=TwistedSister">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=iVa9Cz4MddQ&ab_channel=YerryGarc%C3%ADa">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard E (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Glam Metal</p>
+                    <p><strong>Origin:</strong> New Jersey, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Twisted_Sister">More about this artist</a></p>
+                    <img src="images/twisted-sister.png" alt="Twisted Sister">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('linkin-park')" onmouseout="resetBackground()">
+                  <a href="#">Linkin Park – Don’t Stay</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Whole song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=qq1UEeS1a7c&ab_channel=LinkinPark">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=C7AZjqVR6IE&ab_channel=DottiBrothers">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Drop B (B F# B E G# C#)</p>
+                    <p><strong>Genre:</strong> Nu Metal</p>
+                    <p><strong>Origin:</strong> California, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Linkin_Park">More about this artist</a></p>
+                    <img src="images/linkin-park.png" alt="Link Park">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('joan-jett')" onmouseout="resetBackground()">
+                  <a href="#">Joan Jett and The Blackhearts – I Love Rock N Roll</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Whole song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=wMsazR6Tnf8&ab_channel=JoanJettandtheBlackhearts">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=D_yLqkfLdN8&ab_channel=RockFactory">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Hard Rock/Punk Rock</p>
+                    <p><strong>Origin:</strong> California, United States</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Joan_Jett#Joan_Jett_and_the_Blackhearts">More about this artist</a></p>
+                    <img src="images/joan-jett.png" alt="Joan Jett and The Blackhearts">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('the-darkness')" onmouseout="resetBackground()">
+                  <a href="#">The Darkness – I Believe In A Thing Called Love</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=tKjZuykKY1I&ab_channel=RHINO">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=2MQF9YrsYco&ab_channel=AdamPieper">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Glam rock</p>
+                    <p><strong>Origin:</strong> Suffolk, England</p>
+                    <p><a href="https://en.wikipedia.org/wiki/The_Darkness_(band)">More about The Darkness</a></p>
+                    <img src="images/the-darkness.png" alt="The Darkness">
+                  </div>
+                </li>
+                
+                <li class="song" onmouseover="changeBackground('blur')" onmouseout="resetBackground()">
+                  <a href="#">Blur – Song 2</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Whole song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=SSbBvKaM6sk&ab_channel=Blur">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=jqPSKdaBD_U&ab_channel=EtiennedeLoriol-GuitarLessons">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> 1/2 Step Down <br>(Eb, Ab, Db, Gb, Bb, Eb)</p>
+                    <p><strong>Genre:</strong> Alternative rock</p>
+                    <p><strong>Origin:</strong> London, England</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Blur_(band)">More about Blur</a></p>
+                    <img src="images/blur.png" alt="Blur">
+                  </div>
+                </li>
+
+                <li class="song" onmouseover="changeBackground('the-kinks')" onmouseout="resetBackground()">
+                  <a href="#">The Kinks – All Day And All Of The Night</a>
+                  <div class="song-info">
+                    <p><strong>Location:</strong> Most song</p>
+                    <p><strong>Song Link:</strong> <a href="https://www.youtube.com/watch?v=fOGMRnKl5co&ab_channel=TheKinks">Watch on YouTube</a></p>
+                    <p><strong>Cover Link:</strong> <a href="https://www.youtube.com/watch?v=ZgJXutDigjM&t=74s&ab_channel=MartyMusic">Cover on YouTube</a></p>
+                    <p><strong>Tuning:</strong> Standard (E A D G B E)</p>
+                    <p><strong>Genre:</strong> Rock/Pop</p>
+                    <p><strong>Origin:</strong> London, England</p>
+                    <p><a href="https://en.wikipedia.org/wiki/The_Kinks">More about The Kinks</a></p>
+                    <img src="images/the-kinks.png" alt="The Kinks">
+                  </div>
+                </li>
+                
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item lg:col-span-2">
+        <div class="box-bottom">
+          <h2 class="box-title">Learning Tips</h2>
+          <p class="learning-tip">Start Slow and Clean:</p>
+          <p class="box-content">Before you crank up the distortion, focus on playing power chords slowly with a clean tone and clean technique.</p>
+          <p class="learning-tip">Silence the Extras:</p>
+          <p class="box-content">Don't let unwanted string noise ruin your riffs! Use the palm of your picking hand to gently mute the strings you're not playing.</p>
+          <p class="learning-tip">To Barre or Not to Barre?</p>
+          <p class="box-content">Power chords can be played with separate fingers, or by "barring" strings with one finger. Barring takes some practice, but it allows you to move easier across the fretboard. Start with separate fingers and try barring when you're comfortable. For more practice, check out our Barre Chords section on the main page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <footer class="footer py-4 text-center fixed bottom-0 w-full border-solid border-2 border-sky-500">
+    <div class="container mx-auto">
+      <p class="text-white">© 2024 Rock Guitar Techniques. All rights reserved. Designed by <a href="#"
+          class="text-yellow-300 hover:text-yellow-100 hover:underline">Ahmad Elhemaily</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+   document.getElementById('sidebarToggle').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.toggle('hidden');
+  });
+
+  let originalBackground = 'url("images/bg-body.png")';
+
+  const images = {
+    'acdc': new Image().src = 'images/bg-acdc.png',
+    'scorpions': new Image().src = 'images/bg-scorpions.png',
+    'greenday': new Image().src = 'images/bg-greenday.png',
+    'nirvana': new Image().src = 'images/bg-nirvana.png',
+    'bmth': new Image().src = 'images/bg-bmth.png',
+    'blink-182': new Image().src = 'images/bg-blink-182.png',
+    'twisted-sister': new Image().src = 'images/bg-twisted-sister.png',
+    'linkin-park': new Image().src = 'images/bg-linkin-park.png',
+    'joan-jett': new Image().src = 'images/bg-joan-jett.png',
+    'the-darkness': new Image().src = 'images/bg-the-darkness.png',
+    'blur': new Image().src = 'images/bg-blur.png',
+    'the-kinks': new Image().src = 'images/bg-the-kinks.png'
+  };
+
+  function changeBackground(artist) {
+    document.body.style.backgroundImage = `url("${images[artist]}")`;
+  }
+
+  function resetBackground() {
+    document.body.style.backgroundImage = originalBackground;
+  }
+  <script src="script.js"></script>
+</body>
+
+</html>

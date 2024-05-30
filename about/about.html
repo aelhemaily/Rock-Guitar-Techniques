@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="../fav.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title id = "tab-title">About</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+html {
+  cursor: url('../template/images/cursor2.png'), auto;
+}
+
+
+    .body {
+      background-image: url("bg-header.png");
+      background-size: cover;
+    }
+
+    .footer {
+      background-color: #111111;
+      z-index: 2;
+    }
+
+    @media (max-width: 1023px) {
+  .footer {
+    position: relative;
+  }
+  
+}
+
+    .learning-tip {
+      color: #24fb328f;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 15px;
+      text-shadow: -1px -1px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+    }
+
+    .grid-item {
+      margin-bottom: 20px;
+      border-radius: 3%;
+    }
+
+   
+
+    .grid-item .inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+
+    .section-title {
+     font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  text-align: center;
+  max-width: 95%;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size:25px;
+  }
+}
+
+    .container p {
+      
+      text-shadow: -2px -2px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    }
+
+    .did-you-know-title {
+      color: #FBBF24;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .did-you-know-text {
+      font-size: 28px;
+    }
+
+    .box,
+    .box-right,
+    .box-left,
+    .box-bottom {
+      background-color: rgba(26, 26, 26, 0.8);
+      border: 3px solid lavender;
+      border-radius: 10px;
+      padding: 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box-left:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) translateX(-50px) scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .box-right:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) translateX(50px) scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .box-bottom:hover {
+      
+      border-color: lavender;
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+  .box-left:hover,
+  .box-right:hover,
+  .box-bottom:hover {
+    transform: none;
+    border-color: initial;
+    height: initial;
+    transition: none;
+    z-index: 0;
+    
+  }
+}
+  
+
+    .box-title {
+      color: #FBBF24;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .box-content {
+      color: #fff;
+      font-size: 1.5rem;
+     
+      
+    }
+
+    .box-content a {
+      color: #FBBF24;
+      text-decoration: none;
+    }
+
+    .box-content a:hover {
+      text-decoration: underline;
+    }
+
+    .download-box {
+      margin-top: 5px;
+      
+      
+    }
+
+    .download-box-content a{
+      font-size: 1.1rem;
+      color: silver;
+    }
+
+    .download-box-content li:hover a {
+      text-decoration: underline;
+      color: gold;
+    }
+
+    
+
+#closeX {
+  position: sticky;
+  left: 90%;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px;
+  border: solid 2px;
+  border-radius: 10%;
+  background: rgb(119, 40, 0);
+}
+
+
+    .song-info {
+  position: relative;
+  background-color: rgba(59, 31, 31, 0.649);
+  font-size: 20px;
+  margin: auto 0;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 4px solid #FBBF24;
+  display: none;
+  box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+
+.song-info span {
+  color: burlywood;
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.song-info a {
+  color: gold;
+}
+
+.song-info a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .song-info {
+    left: 50%;
+  }
+}
+
+    .song:active .song-info {
+      display: block;
+    }
+
+    
+
+   
+
+    .song-info p {
+      font-weight: 700;
+    }
+
+    .song {
+  font-size: 20px;
+  font-weight: 500;
+  background-image: linear-gradient(to right, #24fb32bb 0%, #ffffff 50%, #000000 100%);
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+}
+
+.song:hover {
+  -webkit-text-fill-color: initial;
+  color: gold;
+  text-decoration: underline;
+}
+
+    #returnToTopBtn {
+      position: fixed;
+      bottom: 75px;
+      border: solid 2px;
+      text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.602);
+      background: linear-gradient(45deg, #635959, #556270);
+    }
+    
+    @media (max-width: 768px) {
+  #returnToTopBtn {
+    font-size: 0;
+    bottom: 65px;
+  }
+  
+  #returnToTopBtn i {
+    font-size: 1rem;
+  }
+}
+
+#boxSong {
+  color: rgb(119, 40, 0);
+  font-size: 24px;
+  text-shadow: -1px -1px 0 rgb(255, 255, 255), 0.5px -1px 0 rgb(255, 255, 255), -0.5px -.5px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
+  font-weight: 800;
+}
+
+
+#dyk-subtitle {
+  color: #24fb328f;
+      font-size: 2rem;
+      font-weight: 700;
+      
+      text-shadow: -1px -1px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
+
+/* FAQ Section */
+#faq {
+  background: linear-gradient(45deg, #635959, #556270);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  opacity: 0.85;
+  margin-top: 30vh;
+  height: 60vh;
+  overflow: auto; /* Ensure content overflow is scrollable */
+  text-shadow: -1px -1px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+  border: solid 4px;
+  padding: 50px;
+}
+
+@media (max-width: 768px) {
+  #faq {
+   margin-top: 40vh;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+  #faq {
+    top: 70px;
+    position: relative;
+   
+  }
+}
+
+.faq-answer {
+  color: #fff;
+  font-size: 26px;
+  word-wrap: break-word; /* Ensure long words wrap within the box */
+  font-weight: 500;
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 2px -2px 0 black, -1px 1px 0 black, 2px 2px 0 black;
+}
+
+
+@media (max-width: 768px) {
+  #faq {
+    padding: 1rem;
+  }
+
+  .faq-question {
+    font-size: 1.5rem;
+  }
+
+
+  .faq-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.my-name-link {
+    color: burlywood;
+    text-decoration: none;
+  }
+
+  .my-name-link:hover {
+    color: gold; 
+    text-decoration: underline; 
+  }
+
+.top-bar {
+  position: fixed;
+  top: -2px;
+  width: 100%;
+  z-index: 3;
+  background: url('../template/images/banner.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  padding: 75px;
+ 
+ 
+}
+
+@media (max-width: 1281px) {
+  .top-bar {
+    padding: 35px;
+  }
+}
+
+
+.site-title h1 {
+  text-shadow: -1px -1px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+  font-size:38px;
+  
+
+  
+}
+
+@media (min-width: 1281px) {
+  .site-title h1 {
+    position: relative;
+  left: 10vh;
+  }
+}
+
+
+.copy-right-box {
+  background-color: #111111;
+  z-index: 6;
+}
+
+@media (max-width: 1450px) {
+  .copy-right-box {
+    position: relative;
+  }
+}
+
+@media (max-width: 1280px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    background: rgba(0, 0, 0, 0.665);
+    border: 2px solid;
+    padding: 3px;
+    border-radius: 15%;
+    opacity: 1;
+   
+  }
+
+  @media (max-width: 450px) {
+  .hamburger{
+    position: relative;
+    
+   
+   
+  }
+}
+
+@media (min-width: 450px) and (max-width: 760px) {
+  .hamburger{
+    position: relative;
+    bottom: 12px;
+   
+   
+  }
+}
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 60px;
+    display: none;
+    line-height: 65px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+.nav-menu {
+  flex-direction: row;
+  background: linear-gradient(45deg, #c8c5c535, #556270);
+  border: groove 4px;
+  border-radius: 2%;
+  font-weight: 700;
+  text-shadow: -2px -2px 0 rgb(0, 0, 0), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  margin-left: 10px;
+}
+
+.ul-menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.ul-menu li {
+  display: inline-block;
+}
+
+/* Sidebar */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media (max-width: 767px) {
+  .top-bar {
+    height: 18vh;
+  }
+  .top-bar h1{
+    font-size: 22px;
+    bottom: 6px;
+    position: relative;
+   
+  }
+
+}
+
+#case {
+  float: left;
+  margin-left: 50px;
+  width: 220px;
+  position: fixed;
+  margin-top: -10vh;
+  
+  
+ 
+}
+
+#case p {
+  font-size: 26px;
+  font-weight: 500;
+  text-shadow: -2px -2px 0 rgb(0, 0, 0), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  background-color: rgba(128, 128, 128, 0.304);
+  opacity: 0.9;
+  border: solid 2px;
+  padding: 5px;
+  border-radius: 2%;
+  text-align: center;
+  
+
+}
+
+#case a {
+  cursor: url('../images/coin.png'), auto;
+}
+
+@media (max-width: 1420px) {
+  #case {
+  display: none;
+    
+  }
+}
+#case-sidebar {
+  transform: translateY(30%);
+}
+#case-sidebar img {
+width: 100px;
+margin-left: 1vh;
+}
+
+#case-sidebar p {
+  font-size: 14px;
+  width: 150px;
+  line-height: 25px;
+}
+  </style>
+</head>
+
+<body class="body  text-white font-sans">
+
+  <!-- Navigation -->
+  <div class="top-bar bg-black border-solid border-2 border-sky-500">
+    <div class="site-title mx-auto flex items-center">
+      <h1 class="font-bold mx-auto">Rock Guitar Techniques</h1>
+      <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+      <div class="nav-menu" id="nav-id">
+        <ul class="ul-menu">
+          <li><a href="../index.html" class="block py-2 px-4 text-2xl hover:bg-gray-700">Home</a></li>
+          <li><a href="../about/about.html" class="block py-2 px-4 text-2xl hover:bg-gray-700">About</a></li>
+          <li><a href="../faq/faq.html" class="block py-2 px-4 text-2xl hover:bg-gray-700">FAQ</a></li>
+          <li><a href="../contact-me/contact-me.html" class="block py-2 px-4 text-2xl hover:bg-gray-700">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+    <a href="../index.html">Home</a>
+    <a href="../about/about.html">About</a>
+    <a href="../faq/faq.html">FAQ</a>
+    <a href="../contact-me/contact-me.html">Contact Me</a>
+    <div id = "case-sidebar">
+      <a href="template/template.html?type=barrechords">
+      <img src="../images/case.png">
+      <p>Support me & toss a coin in the guitar case!</p>
+    </a>
+    </div>
+  </div>
+  
+
+   <!-- Send lion please-->
+<div id = "case">
+  <a href="template/template.html?type=barrechords">
+  <img src="../images/case.png">
+  <p>Support me & toss a coin in the guitar case!</p>
+</a>
+</div>
+
+  <!-- FAQ Page -->
+<div id="faq" class="container mx-auto my-8 p-8 border-solid border-2 border-sky-500 rounded-lg">
+    <h2 class="section-title">WTH is RockGuitarTechniques.com?</h2>
+      <p class="faq-answer ">Hey there, fellow guitar and rock enthusiasts! Welcome to RockGuitarTechniques.com, a passion project and your roadmap for guitar techniques to learn on your journey to rock.
+
+        <br><br>Of course, exercises are great to learn techniques. However, who hasn't started learning a technique and thought "Man, I wish I knew more songs that use this!".  On every technique you click, RockGuitarTechniques.com displays 12 songs from varied styles with downloadable guitar pro tabs (all rights and credits reserved to original owners in tab info). 
+        
+        <br><br>On each technique, you will see theoretical info, learning tips and trivia about the technique. I have collected for you hundreds of songs on the website along with good covers on YouTube so that you can also see the technique as it is performed by a cool guitarist (all credits to the YouTube rockers involved and tagged).
+        
+        <br><br>Whether you're a beginner, or prime Van Halen, hopefully this website will be a good learning resource and a collection of songs helping you put your knowledge into practice.
+        
+        Rock on,<br><br>
+        <a href="https://example.com" class="my-name-link"><span class="my-name">Ahmad Elhemaily</span></a>
+
+    <!-- Return to Top Button -->
+    <button id="returnToTopBtn" class="fixed right-8 bg-gray-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out text-xs">
+
+      <i class="fas fa-arrow-up"></i> Return to Top
+    </button>
+
+    </div>
+  </div>
+  
+
+
+  <!-- Copyright -->
+  <footer class="footer fixed py-4 text-center bottom-0 w-full border-solid border-2 border-sky-500">
+    <div class="container mx-auto">
+      <p class="text-white">© 2024 Rock Guitar Techniques. All rights reserved. Designed by <a href="#"
+          class="text-yellow-300 hover:text-yellow-100 hover:underline">Ahmad Elhemaily</a>.</p>
+       
+
+    </div>
+   
+
+  </footer>
+
+  
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
