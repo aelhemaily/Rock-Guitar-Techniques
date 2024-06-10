@@ -10,10 +10,6 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
 
   <style>
-    html {
-  cursor: url('images/cursor2.png'), auto;
-}
-
     
     .body {
       background-image: url("images/bg-body.png");
@@ -465,11 +461,12 @@ color: #fff;
 }
 
 #case {
-  float: left;
+  
   margin-left: 50px;
+  margin-bottom: 10px;
   width: 220px;
-  position: fixed;
-  margin-top: 20vh;
+  position: relative;
+  
   
  
 }
@@ -511,6 +508,11 @@ margin-left: 1vh;
   width: 150px;
   line-height: 25px;
 }
+
+#case-grid{
+  display: grid;
+}
+
   </style>
 </head>
 
@@ -548,13 +550,7 @@ margin-left: 1vh;
   </div>
   
 
-   <!-- Send lion please-->
-<div id = "case">
-  <a href="template/template.html?type=barrechords">
-  <img src="../images/case.png">
-  <p>Support me & toss a coin in the guitar case!</p>
-</a>
-</div>
+   
 
   <!-- Main Content -->
   <div class="container mx-auto py-10 px-6 mb-20" id = "section-div">
@@ -610,7 +606,15 @@ margin-left: 1vh;
       </div>
     </div>
   </div>
-
+  <!-- Send lion please-->
+  <div id = "case-grid">
+    <div id = "case">
+      <a href="template/template.html?type=barrechords">
+      <img src="../images/case.png">
+      <p>Support me & toss a coin in the guitar case!</p>
+    </a>
+    </div>
+</div>
   <!-- Copyright -->
   <footer class="copy-right-box py-4 text-center bottom-0 w-full border-solid border-2 border-sky-500">
     <div class="container mx-auto">
